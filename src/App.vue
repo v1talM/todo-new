@@ -9,6 +9,8 @@
 <script>
   import {mapState} from 'vuex'
   import TopMenu from './components/TopMenu'
+  import NProgress from 'NProgress'
+  window.NProgress = NProgress
   export default {
     computed: {
       ...mapState ({
@@ -28,4 +30,5 @@
 <style lang="sass">
   @import './assets/css/bootstrap'
   @import './assets/css/main'
+  @import './assets/css/nprogress'
 </style>

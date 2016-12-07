@@ -10,11 +10,15 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "dragula": "^3.7.2",
     "jquery": "^3.1.1",
     "node-sass": "^3.13.0",
+    "nprogress": "^0.2.0",
     "sass-loader": "^4.0.2",
     "vue": "^2.1.0",
     "vue-axios": "^1.2.2",
+    "vue-dnd": "^0.1.1",
+    "vue-drag-and-drop-list": "^0.8.3",
     "vue-router": "^2.1.1",
     "vuex": "^2.0.0"
   },

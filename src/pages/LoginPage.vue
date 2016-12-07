@@ -23,9 +23,11 @@
                   type="password">
               </div>
               <button class="btn btn-primary">Login</button>
+
             </form>
           </div>
         </div>
+        <p class="text-center">没有账号？ <router-link to="regist">立即注册</router-link></p>
       </div>
     </div>
   </div>
@@ -60,6 +62,7 @@ export default {
         scope: ''
       }
       const authUser = {}
+      NProgress.start()
       this.axios.post(loginUrl, postData)
         .then(response => {
           if(response.status === 200) {
@@ -74,8 +77,31 @@ export default {
                 this.$store.dispatch('setUserObject', authUser)
                 this.$router.push({name: 'dashboard'})
               })
+              .catch(response => {
+                var message = $('<div class="alert alert-dismissible alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>'+
+                '<h4>Warning!</h4>' +
+                response +
+                '</div>')
+                message.fadeTo(2000, 500).fadeOut(500, function(){
+                    message.alert('close');
+                });
+                $("body").prepend(message)
+
+              })
           }
         })
+        .catch( response => {
+          var message = $('<div class="alert alert-dismissible alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>'+
+          '<h4>Warning!</h4>' +
+          response +
+          '</div>')
+          message.fadeTo(2000, 500).fadeOut(500, function(){
+              message.alert('close');
+          });
+          $("body").prepend(message)
+          NProgress.done()
+        })
+
     }
   }
 }
@@ -83,5 +109,5 @@ export default {
 
 <style lang="sass">
   #login-wrapper
-    margin-top: 50px
+    margin-top: 150px
 </style>

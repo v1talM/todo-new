@@ -3,10 +3,16 @@
     <div class="panel panel-primary">
       <div class="panel-heading">待办 ● {{ undo.length }} <i aria-hidden="true" class="fa fa-chevron-circle-down pull-right"></i></div>
        <div class="panel-body">
-         <div class="list-group">
-            <a href="#" class="list-group-item" v-for="todo in undo">
-              {{ todo.title }}
-            </a>
+         <div class="list-group" data-id="0" v-dragula="undo" bag="first-bag">
+             <a
+                :data-id="todo.id"
+                :data-type="todo.completed"
+                href="#"
+                class="list-group-item"
+                v-for="(todo, index) in undo"
+                >
+               {{ todo.title }}
+             </a>
          </div>
        </div>
      </div>
@@ -16,18 +22,6 @@
 <script>
 import {undoUrl, getHeader} from './../../config'
 export default {
-  data () {
-    return {
-      undo: []
-    }
-  },
-  mounted () {
-    this.axios.get(undoUrl, {headers: getHeader()})
-      .then(response => {
-        if(response.status === 200){
-          this.undo = response.data.data
-        }
-      })
-  }
+  props: ['undo']
 }
 </script>
