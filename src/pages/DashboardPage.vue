@@ -61,6 +61,8 @@ export default {
         if(response.status === 200){
           this.undo = response.data.data
         }
+      }).catch(response => {
+        this.getMessage("获取数据失败,请尝试重新登录",1)
       })
 
     this.axios.get(doingUrl, {headers: getHeader()})
@@ -68,6 +70,8 @@ export default {
         if(response.status === 200){
           this.doing = response.data.data
         }
+      }).catch(response => {
+        this.getMessage("获取数据失败,请尝试重新登录",1)
       })
 
       this.axios.get(didUrl, {headers: getHeader()})
@@ -76,6 +80,8 @@ export default {
             this.did = response.data.data
             this.length = response.data.data.length
           }
+        }).catch(response => {
+          this.getMessage("获取数据失败,请尝试重新登录",1)
         })
   },
   methods: {
