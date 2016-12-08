@@ -55,7 +55,7 @@ export default {
     },
     getMessage (info,status=0) {
       if(status == 0){
-        var message = $('<div class="alert alert-dismissible alert-info"><button type="button" class="close" data-dismiss="alert">&times;</button>'+
+        var message = $('<div class="alert alert-dismissible alert-primary"><button type="button" class="close" data-dismiss="alert">&times;</button>'+
         '<h4>Warning!</h4>' +
         info +
         '</div>')

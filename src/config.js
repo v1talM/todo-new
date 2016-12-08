@@ -9,6 +9,7 @@ export const changeToUndo = apiDomain + 'api/changeToUndo/'
 export const changeToDoing = apiDomain + 'api/changeToDoing/'
 export const changeToDid = apiDomain + 'api/changeToDid/'
 export const addTodoUrl = apiDomain + 'api/todo'
+export const delTodoUrl = apiDomain + 'api/todo/'
 
 export const getHeader = function () {
   const tokenData = JSON.parse(window.localStorage.getItem('authUser'))

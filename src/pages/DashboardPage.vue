@@ -1,10 +1,10 @@
 <template lang="html">
   <div class="wrapper" id="dashboard-wrapper">
-    <div class="row">
+
       <Undo :undo="undo"></Undo>
       <Doing :doing="doing"></Doing>
       <Did :did="did"></Did>
-    </div>
+
 
     <div class="">
       <Todo-Form :undo="undo"></Todo-Form>
@@ -20,6 +20,7 @@ import Doing from './../components/todo/Doing'
 import Did from './../components/todo/Did'
 import TodoForm from './../components/todo/AddTodoForm'
 import {getHeader, changeToDid, changeToDoing, changeToUndo, undoUrl, doingUrl, didUrl} from './../config'
+
 export default {
   components: {
     Undo, Doing, Did, TodoForm
@@ -79,22 +80,62 @@ export default {
   },
   methods: {
     dragToUndo (id) {
+      NProgress.start()
       this.axios.get(changeToUndo + id, {headers: getHeader()})
         .then(response => {
-          console.log(response)
+          if(response.data.status === 200){
+            this.getMessage(response.data.message)
+          }else{
+            this.getMessage(response.data.message, 1)
+          }
         })
+      NProgress.done()
     },
     dragToDoing (id) {
+      NProgress.start()
       this.axios.get(changeToDoing + id, {headers: getHeader()})
         .then(response => {
-          console.log(response)
+          if(response.data.status === 200){
+            this.getMessage(response.data.message)
+          }else{
+            this.getMessage(response.data.message, 1)
+          }
         })
+        NProgress.done()
     },
     dragToDid (id) {
+      NProgress.start()
       this.axios.get(changeToDid + id, {headers: getHeader()})
         .then(response => {
-          console.log(response)
+          if(response.data.status === 200){
+            this.getMessage(response.data.message)
+          }else{
+            this.getMessage(response.data.message, 1)
+          }
         })
+        NProgress.done()
+    },
+    getMessage (info, type=0){
+      if(type){
+        var message = $('<div class="alert alert-dismissible alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button>'+
+        '<h4>Warning!</h4>' +
+        info +
+        '</div>')
+        message.fadeTo(2000, 500).fadeOut(500, function(){
+        message.alert('close');
+        });
+        $("body").prepend(message)
+      }else{
+        var message = $('<div class="alert alert-dismissible alert-primary"><button type="button" class="close" data-dismiss="alert">&times;</button>'+
+        '<h4>Warning!</h4>' +
+        info +
+        '</div>')
+        message.fadeTo(2000, 500).fadeOut(500, function(){
+        message.alert('close');
+        });
+        $("body").prepend(message)
+      }
+
     }
   }
 }

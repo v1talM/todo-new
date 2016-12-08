@@ -25,7 +25,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ userStore.authUser.name }} <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><router-link to="todo-count">Todos Count</router-link></li>
+              <li><router-link to="">Todos Count</router-link></li>
               <li><a href="#" @click.prevent="handleLogout()">Logout</a></li>
             </ul>
           </li>
