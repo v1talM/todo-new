@@ -2,16 +2,18 @@
 
 > A Vue.js project
 
+> 一定要安装Node.js! 一定要安装Node.js! 一定要安装Node.js!
+
 ## Build Setup
 
 ``` bash
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# 开发环境运行
 npm run dev
 
-# build for production with minification
+# 生产环境运行
 npm run build
 ```
 
