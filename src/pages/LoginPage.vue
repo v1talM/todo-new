@@ -13,6 +13,7 @@
                 <input
                   v-model="login.email"
                   class="form-control"
+                  placeholder="Enter your email address"
                   type="email">
               </div>
               <div class="form-group">
@@ -20,6 +21,7 @@
                 <input
                   v-model="login.password"
                   class="form-control"
+                  placeholder="Enter your password"
                   type="password">
               </div>
               <button class="btn btn-primary">Login</button>
@@ -41,8 +43,8 @@ export default {
   data () {
     return {
       login: {
-        email: '373357042@qq.com',
-        password: 'password'
+        email: '',
+        password: ''
       }
     }
   },

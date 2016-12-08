@@ -59,10 +59,10 @@ export default {
   data () {
     return {
       register: {
-        username: 'vvv',
-        email: '123456@qq.com',
-        password: '123456',
-        password_confirmation: '123456'
+        username: '',
+        email: '',
+        password: '',
+        password_confirmation: ''
       }
     }
   },
