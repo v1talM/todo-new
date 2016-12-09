@@ -30,12 +30,6 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  if(to.name === 'login' || to.name === 'regist'){
-    const authUser = JSON.parse(window.localStorage.getItem('authUser'))
-    if(authUser && authUser.access_token) {
-      next({name: 'dashboard'})
-    }
-  }
   if(to.meta.requireAuth) {
     const authUser = JSON.parse(window.localStorage.getItem('authUser'))
     if(authUser && authUser.access_token) {
